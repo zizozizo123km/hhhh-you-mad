@@ -1,0 +1,8 @@
+{
+  "name": "BacBoost AI",
+  "description": "AI-powered platform for Algerian Baccalaureate students with smart tutoring, quiz generation, and community support.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

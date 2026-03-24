@@ -1,0 +1,59 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User profile information including their study stream.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "stream": { 
+          "type": "string", 
+          "enum": ["Science", "Mathematics", "TechnicalMath", "Management", "Literature", "Languages"] 
+        },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "name", "email", "stream"]
+    },
+    "ChatMessage": {
+      "title": "Chat Message",
+      "description": "A message sent in a stream-specific chat room.",
+      "type": "object",
+      "properties": {
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "text": { "type": "string" },
+        "stream": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["senderId", "senderName", "text", "stream", "createdAt"]
+    },
+    "CommunityPost": {
+      "title": "Community Post",
+      "description": "A post shared in the study community.",
+      "type": "object",
+      "properties": {
+        "authorId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "text": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["authorId", "authorName", "text", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile documents."
+    },
+    "/chats/{messageId}": {
+      "schema": "ChatMessage",
+      "description": "Stream-specific chat messages."
+    },
+    "/community/{postId}": {
+      "schema": "CommunityPost",
+      "description": "Community forum posts."
+    }
+  }
+}
